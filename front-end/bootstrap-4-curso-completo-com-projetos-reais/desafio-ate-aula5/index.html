@@ -4,16 +4,76 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/example.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <title>Home</title>
 </head>
 <body>
+    <header class="d-flex bg">
+        <div class="container align-items-center">
+            <img class = "" src="assets/img/logo.png" alt="Logotipo Pizzaria">
+            
+            <nav class = "d-flex flex-row justify-content-end">
+                <ul>
+                    <li class="list-inline-item"><a href="#">Home</a></li>
+                    <li class="list-inline-item"><a href="#">Cardápio</a></li>
+                    <li class="list-inline-item"><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <div class="container">
+    <main class="container">
+        <div class="row">
+            <section  class="col-md-3">
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Cardápio</a></li>
+                        <li><a href="#">Pizzas Tradicionais</a></li>
+                        <li><a href="#">Pizzas Nobres</a></li>
+                        <li><a href="#">Pizzas Doces</a></li>
+                        <li><a href="#">Promoções</a></li>
+                        <li><a href="#">Pedido Online</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </nav>
+            </section>
 
-    </div>
+            <section class="col-md-9">
+                <h1>Home</h1>
+                <p>Lorem <strong>ipsum</strong>, dolor sit amet consectetur adipisicing elit. Adipisci nemo <del class="text-danger">inventore</del> provident repellat accusantium, eum eos quasi tempora repellendus deserunt? Beatae perferendis neque labore repudiandae commodi enim nostrum explicabo mollitia.</p>
+            </section>
+        </div>
+        
+    </main>
+
+    <footer>
+        <section class="container">
+            <div class="d-flex">
+                <nav>
+                    <ul>
+                        <li><strong>Links</strong></li>
+                        <li>Home</li>
+                        <li>Cardápio</li>
+                        <li>Contato</li>
+                    </ul>
+                </nav>
+
+                <nav>
+                    <ul>
+                        <li><strong>Pizzas</strong></li>
+                        <li>Tradicionais</li>
+                        <li>Nobres</li>
+                        <li>Doces</li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+        <p class="text-center"><a href="#">Pizzaria.com.br</a></p>
+    </footer>
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
