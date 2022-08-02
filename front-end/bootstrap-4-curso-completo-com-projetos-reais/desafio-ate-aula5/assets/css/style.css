@@ -1,0 +1,42 @@
+:root {
+    --vermelho: rgb(228, 28, 28) ;
+    --azul: rgb(12, 12, 246);
+    --verde: rgb(21, 255, 21);
+    --amarelo: rgb(255, 255, 31);
+    --laranja: rgb(245, 168, 24,.15);
+    --branco: #FFF;
+    
+}
+
+body {
+    background-color: var(--laranja) !important;
+}
+
+.container{
+    padding: 2rem;
+}
+
+.row > .col,
+.row > [class^=col-],
+.bg {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    background-color: var(--laranja);
+    border: 1px solid 
+}
+
+@media (min-width: 576px) { 
+
+}
+
+@media (min-width: 768px) { 
+    
+}
+
+@media (min-width: 992px) { 
+  
+}
+
+@media (min-width: 1200px) { 
+   
+}
