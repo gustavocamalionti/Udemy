@@ -1,0 +1,50 @@
+ /* Extra small devices(portrait phones, less than 576px)
+ No media query for `xs` since this is the default in bootstrap
+
+ Small devices (landscape phones,576px and up)
+@media (min-width:576) { ... } 
+
+ Medium devices(tablets, 768px and up)
+ @media (min-width: 768px) { ... }
+ 
+ Large devices (desktops, 992px and up)
+ @media (min-width: 992px) { ... }
+ 
+ @media (min-width: 1200px) { ... }*/
+
+ :root {
+    --vermelho: rgb(228, 28, 28) ;
+    --azul: rgb(12, 12, 246);
+    --verde: rgb(21, 255, 21);
+    --amarelo: rgb(255, 255, 31);
+    --laranja: rgb(245, 168, 24);
+    
+}
+
+h1 {
+    color: var(--vermelho) !important;
+}
+
+@media (min-width: 576px) { 
+    h1 {
+        color: var(--azul) !important;
+    }
+}
+
+@media (min-width: 768px) { 
+    h1 {
+        color: var(--verde) !important;
+    }
+}
+
+@media (min-width: 992px) { 
+    h1 {
+        color: var(--amarelo) !important;
+    }
+}
+
+@media (min-width: 1200px) { 
+    h1 {
+        color: var(--laranja) !important;
+    }
+}

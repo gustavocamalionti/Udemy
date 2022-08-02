@@ -1,0 +1,42 @@
+:root {
+    --vermelho: rgb(228, 28, 28) ;
+    --azul: rgb(12, 12, 246);
+    --verde: rgb(21, 255, 21);
+    --amarelo: rgb(255, 255, 31);
+    --laranja: rgb(245, 168, 24);
+    --branco: #FFF;
+    
+}
+
+body {
+    background-color: var(--laranja) !important;
+}
+
+header {
+    margin: 2vh auto !important;
+}
+
+header, nav, main {
+    background-color: var(--branco) !important;
+    min-height:10vh !important;
+}
+
+nav, main {
+    min-height: 82vh !important;
+}
+
+@media (min-width: 576px) { 
+
+}
+
+@media (min-width: 768px) { 
+    
+}
+
+@media (min-width: 992px) { 
+  
+}
+
+@media (min-width: 1200px) { 
+   
+}
