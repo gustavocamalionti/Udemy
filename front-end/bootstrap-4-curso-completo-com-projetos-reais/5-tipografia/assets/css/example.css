@@ -16,14 +16,6 @@ body {
     padding: 2rem;
 }
 
-.row > .col,
-.row > [class^=col-],
-.bg {
-    padding-top: .75rem;
-    padding-bottom: .75rem;
-    background-color: var(--laranja);
-    border: 1px solid 
-}
 
 @media (min-width: 576px) { 
 
