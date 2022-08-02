@@ -13,7 +13,7 @@
  @media (min-width: 1200px) { ... }*/
 
  :root {
-    --vermelho: rgb(228, 28, 28) ;
+    --vermelho: rgb(228, 28, 28);
     --azul: rgb(12, 12, 246);
     --verde: rgb(21, 255, 21);
     --amarelo: rgb(255, 255, 31);
