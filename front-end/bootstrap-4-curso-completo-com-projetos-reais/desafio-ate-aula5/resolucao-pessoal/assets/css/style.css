@@ -1,0 +1,41 @@
+:root {
+    --laranja: #F37520;
+    --cinza-claro: #EDEDED;
+    --cinza-escuro: #454545;
+    --branco: #FFFFFF;
+}
+
+body {
+   background-color:var(--branco);
+}
+
+img {
+    width:100px !important;
+}
+
+.bg {
+    background-color: var(--laranja);
+}
+
+.menu {
+    height:35px !important;
+}
+
+.menu__item{
+    color:var(--branco);
+}
+
+#list-container{
+    background-color: var(--cinza-claro);
+   
+}
+
+.list-container__item {
+    color:var(--cinza-escuro) !important;
+}
+
+.rodape {
+    background-color: var(--cinza-escuro);
+    color:var(--branco);
+    bottom:0 !important;
+}

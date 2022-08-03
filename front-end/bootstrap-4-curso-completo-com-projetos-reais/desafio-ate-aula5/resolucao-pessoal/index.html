@@ -10,50 +10,51 @@
     <title>Home</title>
 </head>
 <body>
-    <header class="d-flex bg">
-        <div class="container align-items-center">
-            <img class = "" src="assets/img/logo.png" alt="Logotipo Pizzaria">
-            
-            <nav class = "d-flex flex-row justify-content-end">
-                <ul>
-                    <li class="list-inline-item"><a href="#">Home</a></li>
-                    <li class="list-inline-item"><a href="#">Cardápio</a></li>
-                    <li class="list-inline-item"><a href="#">Contato</a></li>
-                </ul>
-            </nav>
-        </div>
+
+    <header class="container-fluid bg">
+       <section class="container">
+            <div class="d-flex align-items-center justify-content-between">
+                    <img src="assets/img/logo.png" alt="Logotipo Pizzaria">
+                    <nav class="">
+                        <ul class="d-flex align-items-center menu">
+                            <li class="list-inline-item"><a href="#" class="menu__item">Home</a></li>
+                            <li class="list-inline-item"><a href="#" class="menu__item">Cardápio</a></li>
+                            <li class="list-inline-item"><a href="#" class="menu__item">Contato</a></li>
+                        </ul>
+                    </nav>
+            </div>
+        </section>
     </header>
 
     <main class="container">
         <div class="row">
-            <section  class="col-md-3">
+            <section  class="col-3 p-4" id="list-container">
                 <nav>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Cardápio</a></li>
-                        <li><a href="#">Pizzas Tradicionais</a></li>
-                        <li><a href="#">Pizzas Nobres</a></li>
-                        <li><a href="#">Pizzas Doces</a></li>
-                        <li><a href="#">Promoções</a></li>
-                        <li><a href="#">Pedido Online</a></li>
-                        <li><a href="#">Contato</a></li>
+                    <ul class="list-unstyled">
+                        <li class="p-1"><a href="#" class="list-container__item">Home</a></li>
+                        <li class="p-1"><a href="#" class="list-container__item">Cardápio</a></li>
+                        <li class="p-1"><a href="#" class="list-container__item">Pizzas Tradicionais</a></li>
+                        <li class="p-1"><a href="#" class="list-container__item">Pizzas Nobres</a></li>
+                        <li class="p-1"><a href="#" class="list-container__item">Pizzas Doces</a></li>
+                        <li class="p-1"><a href="#" class="list-container__item">Promoções</a></li>
+                        <li class="p-1"><a href="#" class="list-container__item">Pedido Online</a></li>
+                        <li class="p-1"><a href="#" class="list-container__item">Contato</a></li>
                     </ul>
                 </nav>
             </section>
 
-            <section class="col-md-9">
+            <section class="col-9">
                 <h1>Home</h1>
                 <p>Lorem <strong>ipsum</strong>, dolor sit amet consectetur adipisicing elit. Adipisci nemo <del class="text-danger">inventore</del> provident repellat accusantium, eum eos quasi tempora repellendus deserunt? Beatae perferendis neque labore repudiandae commodi enim nostrum explicabo mollitia.</p>
             </section>
         </div>
-        
     </main>
 
-    <footer>
-        <section class="container">
-            <div class="d-flex">
+    <footer class= "rodape container-fluid">
+        <section class="">
+            <div class="container d-flex justify-content-between">
                 <nav>
-                    <ul>
+                    <ul class="list-unstyled">
                         <li><strong>Links</strong></li>
                         <li>Home</li>
                         <li>Cardápio</li>
@@ -62,7 +63,7 @@
                 </nav>
 
                 <nav>
-                    <ul>
+                    <ul class="list-unstyled">
                         <li><strong>Pizzas</strong></li>
                         <li>Tradicionais</li>
                         <li>Nobres</li>

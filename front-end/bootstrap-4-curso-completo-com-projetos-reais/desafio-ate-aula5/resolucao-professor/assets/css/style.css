@@ -1,0 +1,16 @@
+:root {
+    --laranja: #F37520;
+    --cinza-claro: #EDEDED;
+    --cinza-escuro: #454545;
+    --branco: #FFFFFF;
+}
+
+body {
+   background-color:var(--branco);
+}
+
+
+.bg {
+    background-color: var(--laranja);
+}
+
