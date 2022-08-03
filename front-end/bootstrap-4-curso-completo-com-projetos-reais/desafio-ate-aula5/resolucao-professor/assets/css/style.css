@@ -1,16 +1,28 @@
-:root {
-    --laranja: #F37520;
-    --cinza-claro: #EDEDED;
-    --cinza-escuro: #454545;
-    --branco: #FFFFFF;
+header {
+    background-color: #F37520;
+    min-height: 64px;
 }
 
-body {
-   background-color:var(--branco);
+header ul {
+    margin: 0;
 }
 
-
-.bg {
-    background-color: var(--laranja);
+section nav {
+    background-color: #EDEDED;
+    padding: 2rem;
 }
 
+footer {
+    background-color: #454545;
+    padding: 2rem;
+}
+
+@media (min-width: 576px) {
+    main {
+        height: calc(100vh - 300px);
+        overflow: auto;
+    }
+    footer {
+        min-height: 236px;
+    }
+}

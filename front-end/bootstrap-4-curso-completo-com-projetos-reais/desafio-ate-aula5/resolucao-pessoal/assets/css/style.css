@@ -37,5 +37,14 @@ img {
 .rodape {
     background-color: var(--cinza-escuro);
     color:var(--branco);
-    bottom:0 !important;
+}
+
+@media (min-width: 576px) {
+    main {
+        height: calc(100vh - 300px);
+        overflow: auto;
+    }
+    footer {
+        min-height: 236px;
+    }
 }
