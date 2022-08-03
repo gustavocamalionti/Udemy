@@ -27,17 +27,30 @@ main {
     border:1px solid var(--borda);
 }
 
-.perfil__header img, 
-.list-group img,
+.perfil__header img,
 .mensagem_header img {
-    height: 50px;
+    height: 60px;
     margin-right:10px;
-    overflow:auto;
+}
+
+ 
+.list-group img {
+    height:50px;
+    margin-right:10px;
+}
+
+.list-group {
+    font-size:12px !important;
 }
 
 .perfil__contatos {
     background-color:var(--fundo-contato);
 }
+
+.perfil__tempo {
+    margin-bottom:0;
+}
+
 
 .mensagem__header {
     background-color:var(--fundo-perfil);
