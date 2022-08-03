@@ -1,0 +1,55 @@
+:root {
+    --fundo-mensagem: #e5ddd5;
+    --borda: #dbdbdb;
+    --fundo-perfil: #eeeeee;
+    --fonte-principal: #4d4d4d;
+    --fonte-secundaria: #9b9b9b;
+    --fundo-contato: #ffffff;
+    --borda-contato: #f8f8f8;
+    --cabecalho-contato: #f8f8f8;
+    --relogio: #999999;
+    --fundo-badges: #09d261;
+}
+
+
+header, footer {
+    padding:5px;
+    min-height: 60px;
+}
+
+main {
+    height: calc(100vh - 120px);
+    overflow: auto;
+}
+
+.perfil__header {
+    background-color:var(--fundo-perfil);
+    border:1px solid var(--borda);
+}
+
+.perfil__header img, 
+.list-group img,
+.mensagem_header img {
+    height: 50px;
+    margin-right:10px;
+    overflow:auto;
+}
+
+.perfil__contatos {
+    background-color:var(--fundo-contato);
+}
+
+.mensagem__header {
+    background-color:var(--fundo-perfil);
+    border:1px solid var(--borda);
+    padding:15px;
+    
+}
+
+.mensagem__mensagem {
+    background-color: var(--fundo-mensagem);
+}
+
+.mensagem__boxDigitarMensagem {
+    background-color:var(--fundo-perfil);
+}
