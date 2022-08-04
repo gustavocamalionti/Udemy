@@ -11,10 +11,18 @@
     --fundo-badges: #09d261;
 }
 
+* {
+    box-sizing:border-box !important;
+}
 
 header, footer {
-    padding:5px;
-    min-height: 60px;
+    padding:5px !important;
+    height: 65px !important;
+}
+
+#search {
+    background-color: var(--cabecalho-contato);
+    min-height: 50px;
 }
 
 main {
@@ -29,13 +37,13 @@ main {
 
 .perfil__header img,
 .mensagem_header img {
-    height: 60px;
+    max-height: 60px;
     margin-right:10px;
 }
 
  
 .list-group img {
-    height:50px;
+    max-height:50px;
     margin-right:10px;
 }
 
