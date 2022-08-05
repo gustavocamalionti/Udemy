@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <title>Componentes - part 2</title>
+</head>
+<body>
+
+    <main class="container">
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="popover" data-content="Conteúdo do popover">Mostrar Popover</button>
+
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="popover"
+         title="Título do popover"
+         data-content="Conteúdo do popover">Mostrar Popover</button>
+
+        <hr>
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="popover"
+        title="Título do popover"
+        data-content="Conteúdo do popover"
+        data-placement="right">Mostrar Popover</button>
+
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="popover"
+        title="Título do popover"
+        data-content="Conteúdo do popover"
+        data-placement="bottom">Mostrar Popover</button>
+
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="popover"
+        title="Título do popover"
+        data-trigger="hover"
+        data-content="Conteúdo do popover"
+        data-placement="top">Mostrar Popover</button>
+
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="popover"
+        title="Título do popover"
+        data-content="Conteúdo do popover"
+        data-trigger="focus"
+        data-placement="left">Mostrar Popover</button>
+
+        <hr>
+
+        <button type="button" class="btn btn-danger" 
+        id = "btn-click">Abrir popovers</button>
+
+       
+
+        
+
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="assets/js/scripts.js"></script>
+
+    <script>
+        $(() => {
+            
+            $('[data-toggle="popover"]').popover();
+
+            $('#btn-click').on('click', e => {
+                $('[data-toggle="popover"]').popover('toggle');
+            });
+        })
+    </script>
+</body>
+</html>
