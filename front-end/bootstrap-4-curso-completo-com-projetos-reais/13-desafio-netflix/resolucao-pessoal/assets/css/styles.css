@@ -1,23 +1,72 @@
 :root {
+    --nav:#0b0b0b;
+    --body:#1b1b1b;
+    --vermelho:#e30f19;
+    --cinza-claro:#999898;
+    --cinza-escuro:#4d4d4d;
+    --branco: #ffffff
 
 }
 
-* {
-    
+body{
+    display:flex;
 }
+header {
+    height:71px !important;
+}
+nav {
+    background-color: var(--nav);
+}
+
+.button-menu img{
+    width:35px !important;
+    border:none;
+}
+
+#logo-netflix  {
+    padding-left:10px;
+    width:85px;
+}
+
+.active {
+    color:var(--vermelho) !important;
+}
+
+.menuLateral {
+    margin-top:71px;
+    height:calc(100vh - 71px);
+    margin-bottom:0;
+    width:25vw !important;
+    background: var(--body);
+}
+
+.menuLateral__link {
+    color:white !important;
+}
+
+main {
+    margin-top:71px;
+}
+main, footer {
+    opacity:0.95 !important;
+    color:white !important;
+    background-color: var(--body) !important;
+}
+
 
 @media (min-width: 576px) { 
-
+   
 }
 
 @media (min-width: 768px) { 
-    
 }
 
 @media (min-width: 992px) { 
-  
+    .box-logo {
+        display:contents !important;
+    }
 }
 
 @media (min-width: 1200px) { 
-   
+    
 }
