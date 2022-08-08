@@ -5,17 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    
     <title>NETFLIX - Catálogo</title>
 </head>
 
 <body>
     <header>
         <nav class="navbar fixed-top">
-            <button class="navbar-toggler button-menu">
+            <button class="navbar-toggler button-menu" type="button">
                 <img src="assets/img/hamburger.gif" alt="Menu">
             </button>
             <a href="#" class="navbar-brand flex-grow-1 box-logo">
@@ -34,32 +33,62 @@
                 <input type="search" class="form-control mr-sm-2" placeholder="Pesquisar...">
             </form>
         </nav>
+
+        <aside class="navbar">
+            <ul class="menuLateral sidebar">
+                <li class="menuLateral__item"><a href="#" class="menuLateral__link">Início</a></li>
+                <li class="menuLateral__item"><a href="#" class="menuLateral__link">Minha lista</a></li>
+                <li class="menuLateral__item"><a href="#" class="menuLateral__link">Séries de ação e aventura</a></li>
+                <li class="menuLateral__item"><a href="#" class="menuLateral__link">Ação e aventura</a></li>
+                <li class="menuLateral__item"><a href="#" class="menuLateral__link">Séries teen</a></li>
+                <li class="menuLateral__item"><a href="#" class="menuLateral__link">Filmes africanos</a></li>
+                <li class="menuLateral__item"><a href="#" class="menuLateral__link">Séries da América Latina</a></li>
+                <li class="menuLateral__item"><a href="#" class="menuLateral__link">Filmes de Anime</a></li>
+            </ul>
+        </aside>
+       
+       
+       
     </header>
     
-    <aside>
-        <ul class="menuLateral">
-            <li class="menuLateral__item"><a href="#" class="menuLateral__link">Início</a></li>
-            <li class="menuLateral__item"><a href="#" class="menuLateral__link">Minha lista</a></li>
-            <li class="menuLateral__item"><a href="#" class="menuLateral__link">Séries de ação e aventura</a></li>
-            <li class="menuLateral__item"><a href="#" class="menuLateral__link">Ação e aventura</a></li>
-            <li class="menuLateral__item"><a href="#" class="menuLateral__link">Séries teen</a></li>
-            <li class="menuLateral__item"><a href="#" class="menuLateral__link">Filmes africanos</a></li>
-            <li class="menuLateral__item"><a href="#" class="menuLateral__link">Séries da América Latina</a></li>
-            <li class="menuLateral__item"><a href="#" class="menuLateral__link">Filmes de Anime</a></li>
-        </ul>
-    </aside>
-        <main>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error, blanditiis qui voluptas sed perspiciatis quia expedita quas accusamus doloribus cum mollitia totam temporibus ab consequuntur quisquam eligendi id tempora dolor!</p>
-        </main>
-        <footer>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error, blanditiis qui voluptas sed perspiciatis quia expedita quas accusamus doloribus cum mollitia totam temporibus ab consequuntur quisquam eligendi id tempora dolor!</p>
-        </footer>
-    </section>
+    
+    <main>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error, blanditiis qui voluptas sed perspiciatis quia expedita quas accusamus doloribus cum mollitia totam temporibus ab consequuntur quisquam eligendi id tempora dolor!</p>
+    </main>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script src="assets/js/scripts.js"></script>
+    <footer>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error, blanditiis qui voluptas sed perspiciatis quia expedita quas accusamus doloribus cum mollitia totam temporibus ab consequuntur quisquam eligendi id tempora dolor!</p>
+    </footer>
 
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(() => {
+    
+            $('.navbar-toggler').on('click', event => {
+    
+                $('.navbar').toggleClass('sidebar-open');
+    
+                if ($('.navbar').hasClass('sidebar-open')) {
+    
+                    $('<div class="backdrop"></div>').appendTo('body');
+    
+                } else {
+    
+                    $('.backdrop').remove();
+    
+                }
+    
+                $('.backdrop').on('click', event => {
+    
+                    $('.navbar').removeClass('sidebar-open');
+                    $(event.target).remove();
+    
+                });
+    
+            });
+    
+        });
+        </script>
 </body>
 </html>
