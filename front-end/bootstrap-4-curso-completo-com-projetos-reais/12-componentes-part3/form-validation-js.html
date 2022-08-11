@@ -89,8 +89,6 @@
 
     <!--Resolução com JavaScript-->
     <script>
-        
-       
         window.addEventListener('load', e => {
             const form = document.querySelector('form');
             form.addEventListener('submit', es => {
@@ -98,11 +96,8 @@
                     es.preventDefault();
                     es.stopPropagation();
                 }
-            
                 form.classList.add('was-validated');
-
             });
-            
         });
     </script>
 
