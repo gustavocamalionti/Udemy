@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Fornecedor;
+use App\Fornecedor; //trazendo o model para o contexto
 
 class FornecedorSeeder extends Seeder
 {
@@ -29,7 +29,7 @@ class FornecedorSeeder extends Seeder
             'email' => 'contato@fornecedor200.com.br'
         ]);
 
-        //3°forma: insert
+        //3°forma: insert (ele não popula a coluna updated_at e created_at - não recomendado)
         DB::table('fornecedores')->insert([
             'nome' => 'Fornecedor 300',
             'site' => 'fornecedor300.com.br',
