@@ -1,53 +1,37 @@
-<h3>Fornecedor</h3>
+@extends('app/layouts.basico')
 
-@php
-    /* 
-    if(empty(variavel)) {} //retorna true se a variável estiver vazia
-    
-    Situações que o empty retornará True
-    - ''
-    - 0
-    - 0.0
-    - '0'
-    - null
-    - false
-    - array()
-    - $var 
-    */
-@endphp
+@section('titulo', 'Fornecedor')
 
+@section('conteudo')
 
-@isset($fornecedores)
+    <div class="conteudo-pagina">
 
-    @forelse($fornecedores as $indice => $fornecedor)
+        <div class="titulo-pagina-2">
+            <p>Fornecedor</p>
+        </div>
 
-       {{-- @dd($loop) --}}
-        Iteração atual: {{ $loop -> iteration }}
-        <br>
-        Fornecedor: {{ $fornecedor['nome'] }}
-        @php $fornecedor['nome'] = 'Outro nome para o fornecedor' @endphp
-        <br>
-        Status: {{ $fornecedor['status'] }}
-        <br>
-        CNPJ: {{ $fornecedor['cnpj'] ?? '' }}
-        <br>
-        Telefone: ({{$fornecedor['ddd'] ?? ''}}) ({{ $fornecedor['telefone'] ?? '' }})
-        <br>
+        <div class="menu">
+            <ul>    
+                <li><a href="{{ route('app.fornecedor.adicionar') }}">Novo</a></li>
+                <li><a href="">Consulta</a></li>
+            </ul>
 
-        @if($loop->first)
-            Primeira Iteração do Loop
-        @endif
+        </div>
 
-        @if($loop->last)
-            Última Iteração do Loop
-            <br>
-            Total de Registros: {{ $loop -> count}}
-        @endif
+        <div class="informacao-pagina">
+            <div style="width:30%; margin-left:auto; margin-right:auto;">
+                <form action="{{ route('app.fornecedor.listar') }}" method="post">
+                    @csrf
+                    <input type="text" name="nome" placeholder="Nome" class="borda-preta">
+                    <input type="text" name="site" placeholder="Site" class="borda-preta">
+                    <input type="text" name="uf" placeholder="UF" class="borda-preta">
+                    <input type="text" name="email" placeholder="E-mail" class="borda-preta">
 
-       
-        <hr>
-    @empty
-        Não existem fornecedores cadastrados!!
-    @endforelse
-@endisset
+                    <button type="submit" class="borda-preta">Pesquisar</button>
+                </form>
+            </div>
+        </div>
 
+    </div>
+
+@endsection
