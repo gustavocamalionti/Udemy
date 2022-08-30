@@ -25,12 +25,18 @@ class VerificarEmailNotification extends Notification
      */
     public static $toMailCallback;
 
+    public function __construct($name) {
+        $this-> name = $name;
+    }
+
     /**
      * Get the notification's channels.
      *
      * @param  mixed  $notifiable
      * @return array|string
      */
+
+
     public function via($notifiable)
     {
         return ['mail'];
@@ -63,9 +69,10 @@ class VerificarEmailNotification extends Notification
     {
         return (new MailMessage)
             ->subject('Verifique seu endereço de email')
-            ->line('')
-            ->action(Lang::get('Verify Email Address'), $url)
-            ->line(Lang::get('If you did not create an account, no further action is required.'));
+            ->greeting('Olá ' . $this->name)
+            ->line('Clique no botão abaixo para validar seu e-mail')
+            ->action('Clique aqui para validar seu e-mail', $url)
+            ->line('Caso você não tenha se cadastrado em nosso sistema, apenas desconsidere essa mensagem');
     }
 
     /**
