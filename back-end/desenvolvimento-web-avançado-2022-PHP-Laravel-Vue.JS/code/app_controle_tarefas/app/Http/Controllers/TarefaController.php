@@ -7,11 +7,17 @@ use App\Mail\NovaTarefaMail;
 use App\Models\Tarefa;
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Auth;
+use App\Exports\TarefasExport;
+use Excel;
+use PDF;
+
+
 
 class TarefaController extends Controller
 {
     public function __construct() {
        $this->middleware('auth');
+       $this->middleware('verified');
     }
 
     /**
@@ -169,7 +175,19 @@ class TarefaController extends Controller
 
     }
 
-    public function exportacao() {
-        return 'Exportar um arquivo no formato XLSX';
+    public function exportacao($extensao) {
+        if(in_array($extensao, ['csv','xlsx','pdf'])) {
+            return Excel::download(new TarefasExport, 'lista_de_tarefas.' . $extensao);
+        }
+        return redirect()->route('tarefa.index');
+    }
+
+    public function exportar() {
+        //echo 'Chegamos até aqui!';
+
+        $tarefas = auth()->user()->tarefas()->get();
+        $pdf = PDF::loadView('tarefa.pdf', ['tarefas' => $tarefas]);
+        return $pdf->download('lista_de_tarefas.pdf');
+
     }
 }
