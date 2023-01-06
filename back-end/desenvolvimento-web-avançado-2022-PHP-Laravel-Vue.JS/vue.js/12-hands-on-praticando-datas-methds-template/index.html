@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="vue.js"></script>
+    <title></title>
+    <style>
+        .verde {
+            background-color:green;
+        }
+        .branco {
+            background-color:white;
+        }
+
+        .azul { 
+            background-color:blue;
+        }
+        .vermelha { 
+            background-color:red;
+        }
+
+        .rosa {
+            color: rgb(255, 0, 187);
+        }
+
+        .borda {
+            border:1px solid
+        }
+
+        .div-principal {
+            width: 200px;
+            height: 200px;
+        }
+        .div-comum {
+            width: 50px;
+            height: 50px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="app"> 
+        <div class="borda div-principal" v-bind:class="cor">
+            Cor: {{ cor }}
+            <br>
+            Posição X do Mouse: <span v-bind:class="corFont">{{ posicaoX }}</span> <br>
+            Posição Y do Mouse: <span :class="corFont">{{ posicaoY }}</span>
+        </div>
+        <hr>
+        <div class="borda div-comum" v-on:click="mudarCor('verde')"></div>
+        <div class="borda div-comum" v-on:mouseover="mudarCor('azul')" v-on:mouseout="mudarCor('vermelha')"></div>
+        <div class="borda div-comum" @mousemove="coordenadas($event)"></div>
+    </div>
+
+    <script>
+
+        const vm = new Vue({
+            el: '#app', 
+            data: {
+                cor: 'branco',
+                corFont: 'rosa',
+                posicaoX: 0,
+                posicaoY:0
+            },
+            methods: {
+                mudarCor(cor) {
+                    this.cor = cor;
+                    console.log(cor);
+                    
+                },
+
+                coordenadas(e) {
+                    this.posicaoX = e.clientX;
+                    this.posicaoY = e.clientY
+                    console.log(e.clientX, e.clientY);
+                }
+            }
+        }); 
+
+    </script>
+</body>
+</html>

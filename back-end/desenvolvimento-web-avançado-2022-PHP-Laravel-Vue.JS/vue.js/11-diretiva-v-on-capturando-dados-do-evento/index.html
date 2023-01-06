@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="vue.js"></script>
+    <title></title>
+    <style>
+        .verde {
+            background-color:green;
+        }
+
+        .negrito {
+            font-weight: bold;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"> 
+        <input type="text" v-on:keyup="imprimirTexto('Enviando parâmetro...', 5, xyz)"> <!-- v-on: == @ -->
+        <button @click="mensagemAlerta($event, 'texto', 100)">Botão</button> <!-- v-on: == @ -->
+     </div>
+
+    <script>
+
+        const vm = new Vue({
+            el: '#app', 
+            data: {
+                xyz: true
+            },
+            methods: {
+                imprimirTexto(texto,numero, decisao) {
+                    console.log(texto);
+                    console.log(numero);
+                    console.log(decisao);
+                    console.log(this.xyz)
+                },
+                mensagemAlerta(event, p1, p2) {
+                    console.log(event, p1, p2)
+                    alert('Mensagem de Alerta');
+                }
+            }
+        }); 
+
+    </script>
+</body>
+</html>

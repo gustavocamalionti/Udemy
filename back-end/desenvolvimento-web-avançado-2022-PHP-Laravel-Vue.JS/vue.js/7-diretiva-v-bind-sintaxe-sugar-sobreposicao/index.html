@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="vue.js"></script>
+    <title></title>
+    <style>
+        .verde {
+            color:green;
+        }
+
+        .negrito {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="app"> 
+        <a href="https://www.google.com.br" :href="site">Site</a>  <!--a ordem importa, essa é a sobreposição-->
+        <p :class="cor" class="negrito">Entendendo a diretiva V-bind</p> <!-- encadeamento dos valores-->
+        <input type="text" :placeholder="instrucaoDePreenchimento" :value="valor">
+        <input type="checkbox" :checked="check">
+    </div>
+
+    <script>
+
+        const vm = new Vue({
+            el: '#app', 
+            data: {
+                site: 'https://jorgesantana.net.br',
+                cor: 'verde',
+                instrucaoDePreenchimento: 'Placeholder - Diretiva v-bind',
+                valor: 'Entendendo a diretiva v-bind',
+                check: true
+            },
+            methods: {
+            }
+        }); 
+
+    </script>
+</body>
+</html>

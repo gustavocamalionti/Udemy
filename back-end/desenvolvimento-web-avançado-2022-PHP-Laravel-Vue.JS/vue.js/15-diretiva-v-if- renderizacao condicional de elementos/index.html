@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="vue.js"></script>
+    <title></title>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="app"> 
+        <button @click="exibirSaldo = !exibirSaldo">
+            <span v-if="!exibirSaldo">Exibir Saldo</span>
+            <span v-if="exibirSaldo">Consultar Saldo</span>
+        </button> <!-- toggle -->
+        <p><span v-if="exibirSaldo">Saldo: R$ {{ saldo }}</span></p>    <!-- v-if simples -->
+        <hr>
+
+        
+        Idade: <input type="text" id="inputIdade" @blur="setIdade()"> <!-- v-if e v-else -->
+        <p v-if="idade < 18">Menor de Idade</p>
+        <p v-else>Maior de Idade</p>
+        <hr>
+
+        <!-- v-if, v-else-if e v-else -->
+        Nota: <input type="text" id="inputNota" @blur="setNota()">
+        <p v-if="nota == ''">Digite a nota do aluno!</p>
+        <p v-else-if="nota >= 7 && nota <= 10" style="background-color:green; color:white">ALUNO APROVADO</p>
+        <p v-else-if="nota >= 5 && nota < 7" style="background-color:orange; color:black">ALUNO EM RECUPERAÇÃO</P>
+        <p v-else-if="nota >=0 && nota < 5" style="background-color:red; color:white">ALUNO REPROVADO</p>
+        <p v-else>A nota informada é inválida</p>
+    </div> 
+
+    <script>
+
+        const vm = new Vue({
+            el: '#app', 
+            data: {
+                saldo:4570.17,
+                exibirSaldo:true,
+                idade:0,
+                nota:0
+            },
+            methods: {
+                setIdade() {
+                    this.idade = inputIdade.value;
+                    console.log(this.idade);
+                },
+                setNota() {
+                    this.nota = inputNota.value;
+                    console.log(this.nota)
+                }
+            }
+        }); 
+
+    </script>
+</body>
+</html>

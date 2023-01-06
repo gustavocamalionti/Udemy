@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="vue.js"></script>
+    <title></title>
+    <style>
+        .verde {
+            background-color:green;
+        }
+        .branco {
+            background-color:white;
+        }
+
+        .azul { 
+            background-color:blue;
+        }
+        .vermelha { 
+            background-color:red;
+        }
+
+        .rosa {
+            color: rgb(255, 0, 187);
+        }
+
+        .borda {
+            border:1px solid
+        }
+
+        .div-principal {
+            width: 200px;
+            height: 200px;
+        }
+        .div-comum {
+            width: 50px;
+            height: 50px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="app"> 
+        <a href="https://jorgesantana.net.br" target="_blank" v-on:click.prevent="prevenirComportamentoPadrao()">Link</a>
+        <br>
+        Mensagem: {{ msg }}
+        <hr>
+
+        <button @click.once="executarUmaVez()">Botão</button>
+        <p>Cliques: {{ cliques }}</p>
+        <hr>
+
+        <form action="" @submit.prevent.once="prevenirUmaVez()">
+            <button type="submit">Enviar</button>
+        </form>
+        <p>Formulário: {{ formulario }}</p>
+        <hr>
+
+        <fieldset>
+            <p>Qualquer Tecla:</p>
+            <input type="text" @keyup="capturandoTeclas($event)">
+            <p>Teclas: {{ teclas }}</p>
+        </fieldset>
+
+        <fieldset>
+            <p>Apenas quando a tecla 'X' for pressionada</p>
+            <input type="text" @keyup.x="capturandoTeclas($event)">
+            <p>Teclas: {{ teclas }}</p>
+        </fieldset>
+        
+
+        <fieldset>
+            <p>Apenas quando a tecla 'Enter' for pressionada</p>
+            <input type="text" @keyup.enter="capturandoTeclas($event)">
+            <p>Teclas: {{ teclas }}</p>
+        </fieldset>
+
+        <fieldset>
+            <p>Apenas quando a tecla 'SHIFT + ENTER' for pressionada</p>
+            <input type="text" @keyup.shift.enter="testeEncadeamentoTeclas()">
+            <p>{{ teclas }}</p>
+        </fieldset>
+    </div>
+
+    <script>
+
+        const vm = new Vue({
+            el: '#app', 
+            data: {
+                msg: '',
+                cliques: 0,
+                formulario: '',
+                teclas: ''
+            },
+            methods: {
+                prevenirComportamentoPadrao() {
+                    this.msg = 'Comportamento padrão desativado'
+                },
+
+                executarUmaVez() {
+                    this.cliques = this.cliques + 1;
+                },
+
+                prevenirUmaVez() {
+                    this.formulario = 'Prevenindo o comportamento padrão'
+                },
+
+                capturandoTeclas(e) {
+                    console.log(e);
+                    this.teclas += e.code + ' + ' ;
+                },
+
+                testeEncadeamentoTeclas() {
+                    this.teclas = 'Modificadores Encadeados com Sucesso';
+                }
+            }
+        }); 
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="vue.js"></script>
+    <title></title>
+</head>
+<body>
+    
+    <div id="app"> 
+        4 + 2: {{ somar() }} <br>
+        4 - 2: {{ subtrair() }} <br>
+        4 * 2: {{ multiplicar() }} <br>
+        4 / 2: {{ dividir() }} <br>
+        Número Aleatório: {{ numeroAleatorio() }} <br>
+        
+    </div>
+
+    <script>
+
+        const vm = new Vue({
+            el: '#app', 
+            data: {
+                n1: 10,
+                n2: 5,
+                somar: 'somando'
+            },
+            methods: {
+                somar: function somar() { 
+                    return this.n1 + this.n2;
+                },
+                subtrair: function() { 
+                    return this.n1 - this.n2;
+                },
+                multiplicar: () => { //arrow function 
+                    console.log(this); //escopo global ou ao escopo de métodos
+                    return this.n1 * this.n2; //contexto léxico
+                },
+                dividir() { 
+                    let f = () => {
+                        console.log('********', this);
+                        return 'Teste';
+                    }
+                    console.log(f());
+                    console.log(this); //escopo do objeto
+                    return this.n1 / this.n2;
+                },
+
+                numeroAleatorio: function numeroAleatorio() {
+                    return Math.random();
+                }
+                
+            }
+        }); 
+
+    </script>
+</body>
+</html>

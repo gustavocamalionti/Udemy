@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="vue.js"></script>
+    <title></title>
+    <style>
+        .verde {
+            background-color:green;
+        }
+
+        .negrito {
+            font-weight: bold;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- <div id="app"> 
+       {{ 2 + 2 }}
+       <input v-bind:value="2 + 2" v-bind:class="1 == 2 ? 'verde' : estilo">
+    </div> -->
+
+    <div id="app"> 
+        {{ mensagem }} <br>
+        {{ (2 + 2) / 4 }} <br>
+        {{ mensagem.length }} <br>
+        {{ mensagem.substr(0,3) }} <br>
+        <input v-bind:value="2 + 2" v-bind:class="teste ? 'verde' : estilo">
+     </div>
+
+    <script>
+
+        const vm = new Vue({
+            el: '#app', 
+            data: {
+               mensagem: 'Expressão',
+               estilo: 'blue',
+               teste: false
+            },
+            methods: {
+            }
+        }); 
+
+    </script>
+</body>
+</html>
