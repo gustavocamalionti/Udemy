@@ -19,7 +19,7 @@
         <hr>
 
         <h4>Pacientes do plano Ouro</h4>
-        <p v-for="p in pacientes"> {{ p.plano == 'Ouro' ? p.nome : '' }}</p>
+        <p v-for="p in pacientesPlanoOuro"> {{ p.nome }}</p>
         <hr>
 
         <h4>Último paciente cadastrado</h4>
@@ -53,10 +53,13 @@
                     let txt = '';
 
                     txt += 'Paciente ' + this.pacientes[key].nome + ", ";
-                    txt += 'Paciente ' + this.pacientes[key].idade + ", " ;
-                    txt += 'Paciente ' + this.pacientes[key].plano;
+                    txt += 'Idade ' + this.pacientes[key].idade + ", " ;
+                    txt += 'Plano ' + this.pacientes[key].plano;
                     
                     return txt.toUpperCase();
+                },
+                pacientesPlanoOuro() {
+                    return this.pacientes.filter(item => item.plano == 'Ouro'); //O resultado de filter é um array com os resultados que retornem true na arrow function
                 }
             }
 
