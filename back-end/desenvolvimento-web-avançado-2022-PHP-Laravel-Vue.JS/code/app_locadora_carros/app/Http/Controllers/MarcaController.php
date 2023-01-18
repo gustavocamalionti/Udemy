@@ -25,7 +25,8 @@ class MarcaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        return 'Chegamos até aqui (Store)';
     }
 
     /**
