@@ -84,7 +84,10 @@ class MarcaController extends Controller
         }   
 
         $marca->update($request->all());
-        return response()->json($marca, 200);
+        return response()->json([
+            'msg' => 'Recurso atualizado com sucesso.',
+            'retorno' => $marca]
+        , 200);
     }
 
     /**
