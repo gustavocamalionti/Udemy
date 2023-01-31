@@ -81,7 +81,7 @@ class MarcaController extends Controller
             return response()->json([
                 'msg' => 'Impossível realizar a atualização. O recurso solicitado não existe'
             ], 404);
-        }
+        }   
 
         $marca->update($request->all());
         return response()->json($marca, 200);

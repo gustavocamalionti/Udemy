@@ -25,11 +25,21 @@ class UpdateMarcaRequest extends FormRequest
      */
     public function rules()
     {   
-        return [
-            //Buscando a variável protected $marca em MarcaController, ou seja, seu controlador pai.
-            'nome' => 'required|unique:marcas,nome,'.$this->marca,
-            'imagem' => 'required'
-        ];
+        //É necessário essa condição abaixo para diferenciar PATCH DE PUT, sendo que:
+            //PATCH = PARTE DOS ATRIBUTOS
+            //PUT = TODOS OS ATRIBUTOS
+        if ($this->method() == 'PATCH') {
+            return [
+                'nome' => 'unique:marcas,nome,'.$this->marca
+            ];
+        } else {
+            return [
+                //Buscando a variável protected $marca em MarcaController, ou seja, seu controlador pai.
+                'nome' => 'required|unique:marcas,nome,'.$this->marca,
+                'imagem' => 'required'
+            ];
+        }
+       
     }
 
     /**
