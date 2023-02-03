@@ -25,15 +25,19 @@ class StoreMarcaRequest extends FormRequest
     {
         return [
             'nome' => 'required|min:3|unique:marcas',
-            'imagem' => 'required'
+            'imagem' => 'required|file|mimes:png'
         ];
     }
 
     public function messages()
     {
         return [
-            'required' => 'O atributo :attribute é obrigatório.',
-            'nome.unique' => 'O atributo :attribute é Único.',
+            'required' => ':attribute é obrigatório.',
+            'mimes' => ':attribute só aceita arquivos do tipo: :values',
+            'unique' => ':attribute é Único.',
+            'min' => ':attribute precisa ter no mínimo :min caracteres.',
+            
+            
         ];
     }
 }

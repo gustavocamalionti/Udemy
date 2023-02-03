@@ -37,9 +37,18 @@ class MarcaController extends Controller
      */
     public function store(StoreMarcaRequest $request)
     {
-        // dd($request->imagem);
-        dd($request->file('imagem'));
-        $marca = $this->marca->create($request->all());
+        $image = $request->file('imagem');
+        $imagem_urn = $image->store('imagens', 'public');
+        
+        // $marca->nome = $request->nome;
+        // $marca->imagem = $imagem_urn;
+        // $marca->save();
+
+        $marca = $this->marca->create([
+            'nome' => $request->nome,
+            'imagem' => $imagem_urn
+        ]);
+
 
         return response()->json([
             'msg' => 'Criado com sucesso.',
