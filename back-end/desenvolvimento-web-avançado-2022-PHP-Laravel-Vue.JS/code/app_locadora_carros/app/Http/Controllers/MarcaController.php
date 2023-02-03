@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use App\Models\Marca;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreMarcaRequest;
@@ -95,8 +96,12 @@ class MarcaController extends Controller
 
         $imagem_urn = $marca->imagem;
         $imagem = $request->file('imagem');
+
+        //REMOVE O ARQUIVO ANTIGO E CRIA UM NOVO ARQUIVO.
         if($imagem !== null) {
+            Storage::disk('public')->delete($marca->imagem);
             $imagem_urn = $imagem->store('imagens', 'public');
+
         } 
             
         $marca->update([
@@ -119,13 +124,15 @@ class MarcaController extends Controller
     public function destroy($id)
     {
         $marca = $this->marca->find($id);
-
+        
         if($marca == null) {
             return response()->json([
                 'msg' => 'Impossível realizar a exclusão. O recurso solicitado não existe'
             ], 404);
         }
 
+        //REMOVE O ARQUIVO ANTIGO E REMOVE O REGISTRO.
+        Storage::disk('public')->delete($marca->imagem);
         $marca->delete();
         
         return response()->json([
