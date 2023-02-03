@@ -37,8 +37,8 @@ class MarcaController extends Controller
      */
     public function store(StoreMarcaRequest $request)
     {
-        $image = $request->file('imagem');
-        $imagem_urn = $image->store('imagens', 'public');
+        $imagem = $request->file('imagem');
+        $imagem_urn = $imagem->store('imagens', 'public');
         
         // $marca->nome = $request->nome;
         // $marca->imagem = $imagem_urn;
@@ -87,14 +87,23 @@ class MarcaController extends Controller
     public function update(UpdateMarcaRequest $request, $id)
     {
         $marca = $this->marca->find($id);
-       
         if($marca == null) {
             return response()->json([
                 'msg' => 'Impossível realizar a atualização. O recurso solicitado não existe'
             ], 404);
         }   
 
-        $marca->update($request->all());
+        $imagem_urn = $marca->imagem;
+        $imagem = $request->file('imagem');
+        if($imagem !== null) {
+            $imagem_urn = $imagem->store('imagens', 'public');
+        } 
+            
+        $marca->update([
+            'nome' => $request->nome,
+            'imagem' => $imagem_urn,
+        ]);
+       
         return response()->json([
             'msg' => 'Recurso atualizado com sucesso.',
             'retorno' => $marca]
