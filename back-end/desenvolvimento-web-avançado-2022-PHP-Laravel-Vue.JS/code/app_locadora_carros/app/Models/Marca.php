@@ -9,4 +9,9 @@ class Marca extends Model
 {
     use HasFactory;
     protected $fillable = ['nome', 'imagem'];
+
+    public function modelos() {
+        //Uma marca POSSUI MUITOS modelos
+        return $this->hasMany('App\Models\Modelo');
+    }
 }

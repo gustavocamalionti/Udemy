@@ -9,4 +9,9 @@ class Modelo extends Model
 {
     use HasFactory;
     protected $fillable = ['marca_id', 'nome', 'imagem', 'numero_portas', 'lugares', 'air_bag', 'abs'];
+
+    public function marca(){
+        //UM modelo PERTENCE a UMA marca
+        return $this->belongsTo('App\Models\Marca'); //PERTENCE A - BelongsTo
+    }
 }

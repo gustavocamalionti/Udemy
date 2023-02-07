@@ -23,7 +23,7 @@ class MarcaController extends Controller
      */
     public function index()
     {
-        $marcas = $this->marca->all();
+        $marcas = $this->marca->with('modelos')->get();
         return response()->json([
             'msg' => 'Recursos encontrados.',
             'data' => $marcas
@@ -65,7 +65,7 @@ class MarcaController extends Controller
      */
     public function show($id)
     {   
-       $marca = $this->marca->find($id);
+       $marca = $this->marca->with('modelos')->find($id);
        
        if ($marca === null) {
             return response()->json([
@@ -104,10 +104,16 @@ class MarcaController extends Controller
 
         } 
             
-        $marca->update([
-            'nome' => $request->nome,
-            'imagem' => $imagem_urn,
-        ]);
+        //preencher o objeto $marca com os dados do request
+        $marca->fill($request->all());
+        $marca->imagem = $imagem_urn;
+        $marca->save(); //Se existir id nos atributos, o eloquent tem a inteligência de atualizar(UPDATE) o registro, caso contrário, inserção(INSERT).
+        
+
+        // $marca->update([
+        //     'nome' => $request->nome,
+        //     'imagem' => $imagem_urn,
+        // ]);
        
         return response()->json([
             'msg' => 'Recurso atualizado com sucesso.',
