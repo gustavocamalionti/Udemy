@@ -26,7 +26,7 @@ class MarcaController extends Controller
         $marcas = $this->marca->all();
         return response()->json([
             'msg' => 'Recursos encontrados.',
-            'retorno' => $marcas
+            'data' => $marcas
         ], 200);
     }
 
@@ -53,7 +53,7 @@ class MarcaController extends Controller
 
         return response()->json([
             'msg' => 'Criado com sucesso.',
-            'retorno' => $marca
+            'data' => $marca
         ], 201);
     }
 
@@ -74,7 +74,7 @@ class MarcaController extends Controller
         }
        return response()->json([
             'msg' =>'Recurso encontrado.',
-            'retorno' => $marca
+            'data' => $marca
        ], 200);
     }
 
@@ -111,8 +111,8 @@ class MarcaController extends Controller
        
         return response()->json([
             'msg' => 'Recurso atualizado com sucesso.',
-            'retorno' => $marca]
-        , 200);
+            'data' => $marca
+            ], 200);
     }
 
     /**
