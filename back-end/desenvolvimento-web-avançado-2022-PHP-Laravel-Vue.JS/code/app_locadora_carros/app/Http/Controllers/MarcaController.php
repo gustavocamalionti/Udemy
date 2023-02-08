@@ -101,12 +101,12 @@ class MarcaController extends Controller
         if($imagem !== null) {
             Storage::disk('public')->delete($marca->imagem);
             $imagem_urn = $imagem->store('imagens', 'public');
-
         } 
             
         //preencher o objeto $marca com os dados do request
         $marca->fill($request->all());
         $marca->imagem = $imagem_urn;
+        
         $marca->save(); //Se existir id nos atributos, o eloquent tem a inteligência de atualizar(UPDATE) o registro, caso contrário, inserção(INSERT).
         
 
