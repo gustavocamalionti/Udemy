@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Storage;
 use App\Models\Marca;
 use Illuminate\Http\Request;
+use App\Repositories\MarcaRepository;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreMarcaRequest;
 use App\Http\Requests\UpdateMarcaRequest;
 
@@ -21,12 +22,28 @@ class MarcaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $marcas = $this->marca->with('modelos')->get();
+
+        $marcaRepository = new MarcaRepository($this->marca);
+        if($request->has('atributos_modelos')) {
+            $atributos_modelos = 'modelos:id,' . $request->atributos_modelos;
+            $marcaRepository->selectAtributosRegistrosRelacionados($atributos_modelos);
+        } else {
+            $marcaRepository->selectAtributosRegistrosRelacionados('modelos');
+        };
+
+        if($request->has('filtro')){
+           $marcaRepository->filtro($request->filtro);
+        }
+
+        if ($request->has('atributos')) {
+            $marcaRepository->selectAtributos($request->atributos);
+        } 
+        
         return response()->json([
             'msg' => 'Recursos encontrados.',
-            'data' => $marcas
+            'data' => $marcaRepository->getResultado()
         ], 200);
     }
 
@@ -106,7 +123,6 @@ class MarcaController extends Controller
         //preencher o objeto $marca com os dados do request
         $marca->fill($request->all());
         $marca->imagem = $imagem_urn;
-        
         $marca->save(); //Se existir id nos atributos, o eloquent tem a inteligência de atualizar(UPDATE) o registro, caso contrário, inserção(INSERT).
         
 

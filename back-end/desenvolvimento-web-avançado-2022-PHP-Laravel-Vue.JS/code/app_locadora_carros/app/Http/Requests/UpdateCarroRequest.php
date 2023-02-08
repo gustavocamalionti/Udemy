@@ -13,7 +13,7 @@ class UpdateCarroRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,9 +22,38 @@ class UpdateCarroRequest extends FormRequest
      * @return array
      */
     public function rules()
+    {   
+        //É necessário essa condição abaixo para diferenciar PATCH DE PUT, sendo que:
+            //PATCH = PARTE DOS ATRIBUTOS
+            //PUT = TODOS OS ATRIBUTOS
+          
+        if ($this->method() == 'PATCH') {
+            return [
+                'modelo_id' => 'exists:modelos,id'    
+            ];
+        } else {
+            return [
+                //Buscando a variável protected $marca em MarcaController, ou seja, seu controlador pai.
+                'modelo_id' => 'exists:modelos,id',
+                'placa' => 'required',
+                'disponivel' => 'required',
+                'km' => 'required'
+            ];
+        }
+       
+    }
+
+    /**
+     * Explicação sobre o unique:marcas,nome, $this->marca
+     * 1) Tabela
+     * 2) nome da coluna qu eserá pesquisada na tabela
+     * 3) id do registro que será desconsiderado na pesquisa
+     */
+
+    public function messages() 
     {
         return [
-            //
+            'required' => 'O atributo :attribute é obrigatório.',
         ];
     }
 }

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreModeloRequest;
-use App\Http\Requests\UpdateModeloRequest;
 use App\Models\Modelo;
 use Illuminate\Http\Request;
+use App\Repositories\ModeloRepository;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\StoreModeloRequest;
+use App\Http\Requests\UpdateModeloRequest;
 
 class ModeloController extends Controller
 {
@@ -20,9 +21,59 @@ class ModeloController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $modelos = $this->modelo->with('marca')->get();
+        $modeloRepository = new ModeloRepository($this->modelo);
+        if($request->has('atributos_marca')) {
+            $atributos_marca = 'marca:id,' . $request->atributos_marca;
+            $modeloRepository->selectAtributosRegistrosRelacionados($atributos_marca);
+        } else {
+            $modeloRepository->selectAtributosRegistrosRelacionados('marca');
+        };
+
+        if($request->has('filtro')){
+           $modeloRepository->filtro($request->filtro);
+        }
+
+        if ($request->has('atributos')) {
+            $modeloRepository->selectAtributos($request->atributos);
+        } 
+        
+        return response()->json([
+            'msg' => 'Recursos encontrados.',
+            'data' => $modeloRepository->getResultado()
+        ], 200);
+
+
+        //Conferir se há atributos_marca na url de request, ou seja, se o cliente quer filtrar alguma info.
+        if($request->has('atributos_marca')) {
+            $atributos_marca = $request->atributos_marca;
+            $modelos = $this->modelo->with('marca:id,'.$atributos_marca);
+        } else {
+            $modelos = $this->modelo->with('marca');
+        };
+
+        if($request->has('filtro')){
+            // dd($request->filtro);
+            $filtros = explode(';',$request->filtro);
+            foreach($filtros as $key => $condicao) {
+                $c = explode(':', $condicao);
+                $modelos = $modelos->where($c[0], $c[1], $c[2]);
+            }
+        }
+
+        //Conferir se há atributos para serem filtrados. Caso contrário, fará um get padrão em todas as info.
+        if ($request->has('atributos')) {
+            $atributos = $request->atributos;
+            $modelos = $modelos->selectRaw($atributos)->get();
+            
+            // "id", "nome", "imagem" -> aceito pelo select e diferente da forma que o atributos é recuperado request.
+            //"id,nome,imagem" -> aceito pelo selectRaw e igual a atributos recuperados do request.
+        } else {
+            $modelos = $modelos->get();
+        }
+        
+        // $modelos = $this->modelo->with('marca')->get();
         //all() -> criando um obj de consulta + get() = collection
         //get() -> Posssibilidade de modificar a consulta -> collection 
         return response()->json([
