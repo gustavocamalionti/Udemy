@@ -13,7 +13,7 @@ class StoreClienteRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,17 @@ class StoreClienteRequest extends FormRequest
      */
     public function rules()
     {
+
+        // dd($this->request->all());
         return [
-            //
+            'nome' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'required' => ':attribute é obrigatório.',
         ];
     }
 }

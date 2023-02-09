@@ -131,7 +131,7 @@ class CarroController extends Controller
     public function destroy($id)
     {
         $carro = $this->carro->find($id);
-        
+        $carro->delete();
         if($carro == null) {
             return response()->json([
                 'msg' => 'Impossível realizar a exclusão. O recurso solicitado não existe'
