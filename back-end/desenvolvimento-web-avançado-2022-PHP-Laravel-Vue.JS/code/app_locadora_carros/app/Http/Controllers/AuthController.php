@@ -34,7 +34,7 @@ class AuthController extends Controller
             'token' => $token
         ], 200);
     }
-    
+
     public function logout()
     {
         auth('api')->logout();
@@ -42,7 +42,7 @@ class AuthController extends Controller
             'status' => 'Logout foi realizado com sucesso!',
         ], 200);
     }
-    
+
     public function refresh()
     {
         $refresh_token =  auth('api')->refresh();
