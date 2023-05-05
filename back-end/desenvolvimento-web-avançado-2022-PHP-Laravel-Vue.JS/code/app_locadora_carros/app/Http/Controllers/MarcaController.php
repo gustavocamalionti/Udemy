@@ -39,8 +39,8 @@ class MarcaController extends Controller
 
         if ($request->has('atributos')) {
             $marcaRepository->selectAtributos($request->atributos);
-        } 
-        
+        }
+
         return response()->json([
             'msg' => 'Recursos encontrados.',
             'data' => $marcaRepository->getResultado()
@@ -57,7 +57,7 @@ class MarcaController extends Controller
     {
         $imagem = $request->file('imagem');
         $imagem_urn = $imagem->store('imagens', 'public');
-        
+
         // $marca->nome = $request->nome;
         // $marca->imagem = $imagem_urn;
         // $marca->save();
@@ -77,13 +77,13 @@ class MarcaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Integer 
+     * @param  Integer
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {   
+    {
        $marca = $this->marca->with('modelos')->find($id);
-       
+
        if ($marca === null) {
             return response()->json([
                 'msg' => 'Recurso pesquisado não existe'
@@ -109,7 +109,7 @@ class MarcaController extends Controller
             return response()->json([
                 'msg' => 'Impossível realizar a atualização. O recurso solicitado não existe'
             ], 404);
-        }   
+        }
 
         $imagem_urn = $marca->imagem;
         $imagem = $request->file('imagem');
@@ -118,19 +118,19 @@ class MarcaController extends Controller
         if($imagem !== null) {
             Storage::disk('public')->delete($marca->imagem);
             $imagem_urn = $imagem->store('imagens', 'public');
-        } 
-            
+        }
+
         //preencher o objeto $marca com os dados do request
         $marca->fill($request->all());
         $marca->imagem = $imagem_urn;
         $marca->save(); //Se existir id nos atributos, o eloquent tem a inteligência de atualizar(UPDATE) o registro, caso contrário, inserção(INSERT).
-        
+
 
         // $marca->update([
         //     'nome' => $request->nome,
         //     'imagem' => $imagem_urn,
         // ]);
-       
+
         return response()->json([
             'msg' => 'Recurso atualizado com sucesso.',
             'data' => $marca
@@ -140,13 +140,13 @@ class MarcaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Integer  
+     * @param  Integer
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         $marca = $this->marca->find($id);
-        
+
         if($marca == null) {
             return response()->json([
                 'msg' => 'Impossível realizar a exclusão. O recurso solicitado não existe'
@@ -156,7 +156,7 @@ class MarcaController extends Controller
         //REMOVE O ARQUIVO ANTIGO E REMOVE O REGISTRO.
         Storage::disk('public')->delete($marca->imagem);
         $marca->delete();
-        
+
         return response()->json([
             'msg'=> 'A marca foi removida com sucesso!']
             , 200);

@@ -37,8 +37,6 @@ class StoreMarcaRequest extends FormRequest
             'mimes' => ':attribute só aceita arquivos do tipo: :values',
             'unique' => ':attribute é Único.',
             'min' => ':attribute precisa ter no mínimo :min caracteres.',
-            
-            
         ];
     }
 }

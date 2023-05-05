@@ -30,8 +30,8 @@ class LocacaoController extends Controller
 
         if ($request->has('atributos')) {
             $LocacaoRepository->selectAtributos($request->atributos);
-        } 
-        
+        }
+
         return response()->json([
             'msg' => 'Recursos encontrados.',
             'data' => $LocacaoRepository->getResultado()
@@ -55,7 +55,7 @@ class LocacaoController extends Controller
             'valor_diaria' => $request->valor_diaria,
             'km_inicial' => $request->km_inicial,
             'km_final' => $request->km_final,
-            
+
         ]);
 
 
@@ -74,7 +74,7 @@ class LocacaoController extends Controller
     public function show($id)
     {
         $locacao = $this->locacao->find($id);
-       
+
        if ($locacao === null) {
             return response()->json([
                 'msg' => 'Recurso pesquisado não existe'
@@ -95,24 +95,24 @@ class LocacaoController extends Controller
      */
     public function update(UpdateLocacaoRequest $request, $id)
     {
-        
+
         $locacao = $this->locacao->find($id);
         if($locacao == null) {
             return response()->json([
                 'msg' => 'Impossível realizar a atualização. O recurso solicitado não existe'
             ], 404);
-        }   
-            
+        }
+
         //preencher o objeto $marca com os dados do request
         $locacao->fill($request->all());
         $locacao->save(); //Se existir id nos atributos, o eloquent tem a inteligência de atualizar(UPDATE) o registro, caso contrário, inserção(INSERT).
-        
+
 
         // $marca->update([
         //     'nome' => $request->nome,
         //     'imagem' => $imagem_urn,
         // ]);
-       
+
         return response()->json([
             'msg' => 'Recurso atualizado com sucesso.',
             'data' => $locacao
@@ -128,13 +128,15 @@ class LocacaoController extends Controller
     public function destroy($id)
     {
         $locacao = $this->locacao->find($id);
-        $locacao->delete();
+        
         if($locacao == null) {
             return response()->json([
                 'msg' => 'Impossível realizar a exclusão. O recurso solicitado não existe'
             ], 404);
         }
-        
+
+        $locacao->delete();
+
         return response()->json([
             'msg'=> 'A locação foi removida com sucesso!']
             , 200);
