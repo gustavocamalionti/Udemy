@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercício</title>
 </head>
-<body>
-    
+
+<body style="overflow:hidden">
+    <section style="display:grid; grid-template-columns: auto auto; ">
+        <div>
+            <form class="form" action="" method="post">
+                <div class=""
+                    style="display:flex; flex-direction: column; align-items:center; justify-content:center;height:100vh;">
+                    <label for="name">Nome: </label>
+                    <input type="text" id="name" name="name"
+                        style="margin-bottom:15px;border-radius:6px; padding:2px 25px 2px 25px;line-height: 25px;">
+                    <label for="lastName">Sobrenome: </label>
+                    <input type="text" id="lastName" name="lastName"
+                        style="margin-bottom:15px;border-radius:6px; padding:2px 25px 2px 25px;line-height: 25px;">
+                    <label for="weightKg">Peso(Kg): </label>
+                    <input type="text" id="weightKg" name="weightKg"
+                        style="margin-bottom:15px;border-radius:6px; padding:2px 25px 2px 25px;line-height: 25px;">
+                    <label for="heightM">Altura(m): </label>
+                    <input type="text" id="heightM" name="heightM"
+                        style="margin-bottom:15px;border-radius:6px; padding:2px 25px 2px 25px;line-height: 25px;">
+                    <button type="submit"
+                        style="background-color: rgb(83, 83, 237);color:white;border-radius:15px;padding:10px 80px 10px 80px;align-self: center;">Enviar</button>
+                </div>
+            </form>
+        </div>
+        <div id="content" style="overflow:auto; height:100vh;">
+        </div>
+    </section>
+
     <script src="js/script.js"></script>
 </body>
+
 </html>
