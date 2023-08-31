@@ -1,35 +1,11 @@
-//Filter, map, reduce (Funções mais importantes do JAVASCRIPT)
-//Filter passa no seu argumento uma função de callback
+const array1 = [1, 2, 3];
+const array2 = [4, 5, 6];
 
-//Retorne os números maiores que 10 em um novo array
-//               0, 1, 2,3,4 ...
-const numeros = [5, 50, 80, 1, 2, 3, 5, 8, 7, 11, 55, 22, 27];
+// const array3 = array1 + array2; ERRADO!
+const array3 = array1.concat(array2, [7, 8, 9], 'Luiz');
+console.log(array3);
 
-//FORMA LONGA E NÃO USUAL
-//valor,indice,array não precisaria declarar ,porque automaticamente ele é retornado.
-function callbackFilter(valor, indice, array) {
-    // JEITO CORRETO
-    return valor > 10;
+// ... rest (array e objetos)
+array4 = [...array1, 'Luiz', ...array2, ...[7, 8, 9]];
+console.log(array4);
 
-    // JEITO BURRO
-    // if (valor > 10) {
-    //     return true;
-    // } else {
-    //     return false;
-    // }
-}
-const numerosFiltrados = numeros.filter(callbackFilter);
-console.log(numerosFiltrados);
-
-//FORMAS MAIS COMUNS
-const numerosFiltrados2 = numeros.filter(function(valor) {
-    return valor > 10;
-})
-
-console.log(numerosFiltrados2);
-
-const numerosFiltrados3 = numeros.filter((valor) => {
-    return valor > 10;
-})
-
-console.log(numerosFiltrados3);
