@@ -1,0 +1,29 @@
+-------------------- INICIAR O GERENCIADOR DE PACOTES DO NODE --------------------
+npm init -y
+
+-------------------- INSTALAR O BABEL E SUAS DEPENDENCIAS------------------------
+OBS: --save-dev É para tornar as dependencias não obrigatórias.
+npm install --save-dev @babel/cli @babel/preset-env @babel/core
+
+OBS:: Se quiser especificar uma versão, basta digitar:
+npm install --save-dev @babel/cli@7.6.4 @babel/preset-env@7.6.3 @babel/core@7.6.4
+
+-------------------- MOMENTO IDEAL PARA INICIALIZAR O GIT ------------------------
+Crie o arquivo: .gitignore 
+coloque no arquivo .gitignore a pasta node_modules, já que tem muitos arquivos desnecessários para o controle de versão.
+
+
+
+
+
+------------------- Converter um arquivo JAVASCRIPT para uma versão compatível com todos os navegadores (COMPILAR OS ARQUIVOS) -----------------------------
+digite no terminal: npx babel main.js -o bundle.js --presets=@babel/env 
+
+
+------------------ TORNAR O SCRIPT AUTOMATICO ---------------
+OBS: -w é como se fosse um npm run watch (fica assistindo qualquer modificação no javascript)
+Em package.json, criar um script:
+"babel": "babel ./main.js -o ./bundle.js --presets=@babel/env -w"
+
+------------------ COMPILAR O ARQUIVO --------------------
+npm run babel
