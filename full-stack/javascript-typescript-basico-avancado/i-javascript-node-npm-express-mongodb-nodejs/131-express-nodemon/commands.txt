@@ -1,0 +1,21 @@
+npm init -y
+npm install express
+npm install nodemon --save-dev
+
+//EXECUTAR NA MÃO
+npx nodemon server.js
+
+
+//MODO MAIS PRÁTICO
+Acessar o arquivo package.json e alterar:
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+
+  Para
+
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },

@@ -1,0 +1,46 @@
+-----------------Instalar um pacote na sua última versão em Dependencies----------------------------------
+Comando: npm install express
+Em package-lock.json, o "^" indica que é a última versão e sempre pode atualizar para a versão mais atual.
+"dependencies": {
+        "express": "^4.18.2"
+    }
+
+Se quiser uma versão exata, basta remover o ^, para remover basta digitar:
+Comando: npm install express -e
+
+---------------- Diferença entre Dependencies e DevDependencies ------------------------------------------
+Por exemplo: Webpack e Babel são dependencias de desenvolvimento, ou seja, não são necessárias no projeto quando ele estiver em execução.
+
+------------------------------ Mover uma dependencia para DevDependencies --------------------------------
+Comando: npm install express --save-dev
+
+------------------------------ Mover uma  DevDependencies para Dependencies --------------------------------
+npm install express --save-prod
+
+------------------------------ Instalar uma versão específica de um projeto --------------------------------
+npm install express@2.1.0 (2 = major, 1 = minor, 0 = patch)
+
+Patch = Correção de Bugs (2.1.1)
+Minor = Um recurso novo (2.2.0)
+Major = Alterações substânciais (3.0.0)
+
+----------------------------- Atualizar Pacotes --------------------------------------
+Atualizar todos os pacotes para a sua ultima versão (minor e patch).
+Para atualizar a Major, é necessário fazer manualmente pois as mudanças podem acarretar erros de compatibilidade.
+
+Comando: npm update
+
+"^" => permissão para atualizar automaticamente a minor e a patch.
+"~" => Só irá atualizar a versão patch.
+Versão 4x, na sua ultima versão. npm install express @4.x
+
+--------------------------- Remover um Pacote -----------------------------------------
+Comando: npm uninstall express
+
+--------------------------- Listar todos os Pacotes -----------------------------------------
+Comando: npm ls
+Comando: npm ls --depth=0 (Mostrar apenas as dependencias instaladas, default)
+Comando: npm ls --depth=1 (0,1,2,3, ou 4 +++, Mostrar os níveis de dependencia das dependencias)
+
+-------------------------- Consultar Pacotes Desatualizados -----------------------------------
+Comando: npm outdated
