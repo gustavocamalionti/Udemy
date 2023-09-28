@@ -1,0 +1,18 @@
+https://www.mongodb.com/atlas/database
+
+npm i mongodb
+
+<%= titulo %> <br> Não escapa caracteres, ou seja, não entende tags HTML
+<%- titulo %>  ESCAPA CARACTERES
+
+<% Controle de fluxo (if, for ...)%>
+<%= Imprime escapando caracteres %>
+<%- Imprime sem escapar caracteres %>
+<%# Comentário %>
+<$i include ('CAMINHO/ARQUIVO'); %>
+
+<$ if(algumacoisa) { %>
+    <%= exibe alguma coisa %>
+<% { else } %>
+<%= exibe outra coisa %>
+<% } %>
