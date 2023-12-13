@@ -1,10 +1,11 @@
 npm init -y
 npm install express
+
+//NODEMOON funciona como um npm run watch, fica observando qualquer alteração no projeto.
 npm install nodemon --save-dev
 
 //EXECUTAR NA MÃO
 npx nodemon server.js
-
 
 //MODO MAIS PRÁTICO
 Acessar o arquivo package.json e alterar:
